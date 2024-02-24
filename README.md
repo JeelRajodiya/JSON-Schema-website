@@ -42,7 +42,7 @@ git submodule update
 
 #### Install dependencies
 
-Install dependencies
+Install dependencies using
 ```
 yarn
 ```
