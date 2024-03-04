@@ -15,6 +15,11 @@ type CustomElement = CustomNode | CustomText;
 type CustomNode = { type: 'paragraph'; children: CustomText[] };
 type CustomText = { text: string };
 
+// slate does not support useLayoutEffect in SSR, so we need to polyfill it for SSR
+if (typeof process !== 'undefined' && process.browser !== true) {
+  React.useLayoutEffect = React.useEffect;
+}
+
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor;
