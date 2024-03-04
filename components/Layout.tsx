@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { DocSearch } from '@docsearch/react';
 import useStore from '~/store';
 import { SectionContext } from '~/context';
+import { usePathname } from 'next/navigation';
 
 type Props = {
   children: React.ReactNode;
@@ -110,14 +111,14 @@ const MainNavLink = ({
   isActive: boolean;
   className?: string;
 }) => {
-  const router = useRouter();
+  const pathname = usePathname()
   return (
     <Link
       href={uri}
       className={classnames(
         className,
         'font-semibold p-2 md:p-4',
-        `${router.asPath === uri ? 'text-primary hover:text-primary' : 'text-slate-600 hover:text-primary'}`,
+        `${pathname === uri ? 'text-primary hover:text-primary' : 'text-slate-600 hover:text-primary'}`,
       )}
     >
       {label}
