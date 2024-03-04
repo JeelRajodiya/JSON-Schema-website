@@ -6,6 +6,7 @@ import { HOST } from '~/lib/config';
 import classnames from 'classnames';
 import { SegmentHeadline } from './Layout';
 import CarbonAds from './CarbonsAds';
+import { usePathname } from 'next/navigation';
 
 const DocLink = ({
   uri,
@@ -122,7 +123,7 @@ export const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
   const [rotateChevron, setRotateChevron] = useState(false);
   const handleRotate = () => setRotateChevron(!rotateChevron);
   const rotate = rotateChevron ? 'rotate(180deg)' : 'rotate(0)';
-
+  const pathName = usePathname()
   return (
     <div className='max-w-[1400px] mx-auto flex flex-col items-center'>
       <section>
@@ -136,18 +137,18 @@ export const SidebarLayout = ({ children }: { children: React.ReactNode }) => {
               setOpen(!open);
             }}
           >
-            {router.asPath === '/overview/what-is-jsonschema' && (
+            {pathName === '/overview/what-is-jsonschema' && (
               <h3 className='text-white ml-12'>Overview</h3>
             )}
-            {getStartedPath.includes(router.asPath) && (
+            {getStartedPath.includes(pathName) && (
               <h3 className='text-white ml-12'>Getting Started</h3>
             )}
 
-            {getReferencePath.includes(router.asPath) && (
+            {getReferencePath.includes(pathName) && (
               <h3 className='text-white ml-12'>Reference</h3>
             )}
 
-            {getSpecificationPath.includes(router.asPath) && (
+            {getSpecificationPath.includes(pathName) && (
               <h3 className='text-white ml-12'>Specification</h3>
             )}
 
