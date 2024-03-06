@@ -1,7 +1,7 @@
 import slugify from 'slugify';
 
 const FRAGMENT_REGEX = /\[#(?<slug>(\w|-|_)*)\]/g;
-// Yo
+// Yod 
 export default function slugifyMarkdownHeadline(
   markdownChildren: string | any[],
 ): string {
